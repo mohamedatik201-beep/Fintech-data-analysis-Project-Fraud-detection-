@@ -1,4 +1,6 @@
 # 🛡️ E-Commerce Fraud Detection — VPN Transactions Analysis
+![Uploading image.png…]()
+
 
 > Exploratory analysis of an e-commerce transaction dataset to identify fraud patterns linked to VPN usage.
 
