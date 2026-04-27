@@ -1,103 +1,92 @@
-# 🛡️ E-Commerce Fraud Detection — VPN Transactions Analysis
+# 🛡️ E-Commerce Fraud Detection — VPN Transaction Analysis
 
-> Exploratory analysis of an e-commerce transaction dataset to identify fraud patterns linked to VPN usage.
-
----
-
-## 📋 Overview
-
-This project analyzes **10,000 e-commerce transactions** to understand the behavior of transactions detected with an active VPN, often associated with location spoofing or suspicious activity.
-
-The main goal is to uncover actionable patterns to improve fraud detection strategies.
+Exploratory analysis of **10,000 e-commerce transactions** to identify fraud patterns linked to VPN usage, suspicious browsing behavior, and payment anomalies.
 
 ---
 
-## 🎯 Objectives
+## 📌 Context
 
-- Identify the **product categories** most affected by VPN transactions
-- Determine the **browsers** most commonly used during these transactions
-- Analyze **card types** (Visa, Mastercard, etc.) associated with VPN transactions
-- Compare fraud rates between VPN and non-VPN transactions
-- Provide **concrete recommendations** for fraud prevention
+This project investigates how VPN usage correlates with fraudulent e-commerce activity. The goal is to surface actionable patterns that can feed into a fraud prevention strategy or a future ML classification model.
 
 ---
 
-## 📂 Project Structure
+## 📂 Repository Structure
 
 ```
+Fintech-data-analysis-Project-Fraud-detection/
 ├── ecommerce_fraud_dataset.csv   # Main dataset (10,000 transactions)
-├── notebook_fraude.ipynb         # Main analysis notebook
+├── notebook_fraude.ipynb         # Full EDA notebook
 └── README.md
 ```
 
 ---
 
-## 📊 Dataset
+## 📊 Dataset Overview
 
 | Attribute | Detail |
 |---|---|
-| **File** | `ecommerce_fraud_dataset.csv` |
-| **Rows** | 10,000 transactions |
-| **Columns** | 18 features |
-| **Period** | 2023 |
+| Rows | 10,000 transactions |
+| Columns | 18 features |
+| Period | 2023 |
+| Target | `is_fraud` (0 / 1) |
 
-### Features
+### Key Features
 
-| Column | Type | Description |
-|---|---|---|
-| `transaction_id` | string | Unique transaction identifier |
-| `transaction_date` | datetime | Date and time of the transaction |
-| `hour` | int | Hour of the transaction |
-| `amount_usd` | float | Transaction amount in USD |
-| `category` | string | Product category |
-| `country` | string | Country of origin |
-| `payment_method` | string | Payment method used |
-| `card_type` | string | Card type (Visa, Mastercard…) |
-| `device_type` | string | Device type used |
-| `browser` | string | Browser used |
-| `account_age_days` | int | Account age in days |
-| `tx_last_24h` | int | Number of transactions in the past 24 hours |
-| `n_items` | int | Number of items purchased |
-| `addr_mismatch` | int (0/1) | Shipping address mismatch flag |
-| `form_fill_time_sec` | int | Form fill time in seconds |
-| `email_domain` | string | Email address domain |
-| `vpn_detected` | int (0/1) | VPN detected during transaction |
-| `is_fraud` | int (0/1) | Label: fraudulent transaction |
+| Column | Description |
+|---|---|
+| `transaction_id` | Unique transaction identifier |
+| `transaction_date` | Date and time |
+| `amount_usd` | Transaction amount (USD) |
+| `category` | Product category |
+| `country` | Country of origin |
+| `card_type` | Visa, Mastercard… |
+| `device_type` | Device used |
+| `browser` | Browser used |
+| `account_age_days` | Account age in days |
+| `tx_last_24h` | Transactions in the past 24h |
+| `addr_mismatch` | Shipping address mismatch (0/1) |
+| `vpn_detected` | VPN active during transaction (0/1) |
+| `is_fraud` | Fraud label (0/1) |
 
 ---
 
 ## 🔍 Key Findings
 
-- **6.19%** of transactions (619 out of 10,000) were made with an active VPN
-- VPN transactions show a **higher fraud rate** compared to standard transactions
-- Certain categories, browsers, and card types are **over-represented** in VPN transactions
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-```bash
-pip install pandas 
-```
-
-### Run the Notebook
-
-```bash
-jupyter notebook notebook_fraude.ipynb
-```
+- **6.19%** of transactions (619 / 10,000) were made with an active VPN
+- VPN transactions show a significantly **higher fraud rate** than standard ones
+- Specific **product categories**, **browsers**, and **card types** are over-represented among VPN transactions
+- **Address mismatch** and **short form fill time** are strong co-indicators of fraud
 
 ---
 
 ## 💡 Recommendations
 
-1. **Enhanced Monitoring** — Apply stricter checks on VPN transactions, especially in high-risk categories
-2. **Browser-Based Rules** — Incorporate browser type as a signal in detection models
-3. **Geolocation Verification** — Develop identity verification methods beyond IP-based location detection
-4. **Predictive Modeling** — Train a machine learning model on these patterns for automated detection
+| Priority | Action |
+|---|---|
+| 🔴 High | Apply stricter verification on VPN transactions in high-risk categories |
+| 🟠 Medium | Incorporate browser type and device as fraud signals |
+| 🟡 Planned | Build an ML classifier (Random Forest / XGBoost) on these patterns |
 
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/mohamedatik201-beep/Fintech-data-analysis-Project-Fraud-detection-.git
+cd Fintech-data-analysis-Project-Fraud-detection-
+pip install pandas matplotlib jupyter
+jupyter notebook notebook_fraude.ipynb
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python 3.10+**
+- pandas · matplotlib · jupyter
+
+---
 
 ## 📄 License
 
-This project is intended for educational and analytical purposes.
+For educational and analytical purposes.
