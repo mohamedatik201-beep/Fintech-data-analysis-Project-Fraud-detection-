@@ -1,4 +1,4 @@
-# 🛡️ E-Commerce Fraud Detection — VPN Transaction Analysis
+# 🛡️ E-Commerce Fraud Detection — VPN Transaction Analysis in UK
 
 Exploratory analysis of **10,000 e-commerce transactions** to identify fraud patterns linked to VPN usage, suspicious browsing behavior, and payment anomalies.
 
